@@ -19,21 +19,23 @@ p {
     margin: 0;
 }
 
-.form-row-usuario {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "username password"
-        ". checkbox";
-    gap: 10px;
-}
-
 .form-group-column {
     display: flex;
     flex-direction: column;
+    margin-bottom: 1rem;
 }
 
 .form-group-row {
     display: flex;
+}
+
+.form-row-usuario {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        "username password"
+        ". checkbox";
+    gap: 10px;
 }
 
 .username {
@@ -46,4 +48,87 @@ p {
 
 .checkbox {
     grid-area: checkbox;
+}
+
+.form-row-personales-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        "nombre apellidos"
+        "telefono postal";
+    gap: 10px;
+}
+
+.nombre {
+    grid-area: nombre;
+}
+
+.apellidos {
+    grid-area: apellidos;
+}
+
+.telefono {
+    grid-area: telefono;
+}
+
+.codPostal {
+    grid-area: postal;
+}
+
+.form-row-personales-2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: 
+        "dni cuenta nacimiento"
+        "texto . ."
+        "aficion1 aficion2 aficion3"
+        "aficion4 aficion5 aficion6";
+    gap: 10px;
+}
+
+.dni {
+    grid-area: dni;
+}
+
+.cuenta {
+    grid-area: cuenta;
+}
+
+.nacimiento {
+    grid-area: nacimiento;
+}
+
+.aficion-texto {
+    grid-area: texto;
+}
+
+.aficion-1 {
+    grid-area: aficion1;
+}
+
+.aficion-2 {
+    grid-area: aficion2;
+}
+
+.aficion-3 {
+    grid-area: aficion3;
+}
+
+.aficion-4 {
+    grid-area: aficion4;
+}
+
+.aficion-5 {
+    grid-area: aficion5;
+}
+
+.aficion-6 {
+    grid-area: aficion6;
+}
+
+.contador {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.75rem;
+    color: grey;
 }
