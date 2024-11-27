@@ -1,0 +1,49 @@
+body {
+    font-family: "Arial", sans-serif;
+}
+
+fieldset {
+    border: none;
+    margin-bottom: 2rem;
+}
+
+legend {
+    width: 100%;
+    border-bottom: 2px solid black;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.form-row-usuario {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "username password"
+        ". checkbox";
+    gap: 10px;
+}
+
+.form-group-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-row {
+    display: flex;
+}
+
+.username {
+    grid-area: username;
+}
+
+.password {
+    grid-area: password;
+}
+
+.checkbox {
+    grid-area: checkbox;
+}
