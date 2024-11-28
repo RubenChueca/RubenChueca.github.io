@@ -19,13 +19,13 @@ p {
     margin: 0;
 }
 
-input:required:invalid,
-textarea:required:invalid {
+input:invalid,
+textarea:invalid {
     border: 1px solid red;
 }
 
-input:required:valid,
-textarea:required:valid,
+input:valid:not([type="submit"]),
+textarea:valid,
 #nacimiento {
     border: 1px solid lightgreen;
 }
