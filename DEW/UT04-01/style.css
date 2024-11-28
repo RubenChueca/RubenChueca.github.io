@@ -19,6 +19,24 @@ p {
     margin: 0;
 }
 
+input:required:invalid,
+textarea:required:invalid {
+    border: 1px solid red;
+}
+
+input:required:valid,
+textarea:required:valid,
+#nacimiento {
+    border: 1px solid lightgreen;
+}
+
+input:focus,
+textarea:focus,
+#nacimiento:focus {
+    border: 1px solid blue !important;
+    outline: none;
+}
+
 .form-group-column {
     display: flex;
     flex-direction: column;
@@ -32,7 +50,7 @@ p {
 .form-row-usuario {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 
+    grid-template-areas:
         "username password"
         ". checkbox";
     gap: 10px;
@@ -53,7 +71,7 @@ p {
 .form-row-personales-1 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 
+    grid-template-areas:
         "nombre apellidos"
         "telefono postal";
     gap: 10px;
@@ -78,7 +96,7 @@ p {
 .form-row-personales-2 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: 
+    grid-template-areas:
         "dni cuenta nacimiento"
         "texto . ."
         "aficion1 aficion2 aficion3"

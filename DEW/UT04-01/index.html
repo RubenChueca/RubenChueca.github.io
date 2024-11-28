@@ -17,11 +17,12 @@
             <div class="form-row-usuario">
                 <div class="form-group-column usuario">
                     <label for="usuario">Nombre de usuario</label>
-                    <input type="text" name="usuario" id="usuario" placeholder="UserName">
+                    <input type="text" name="usuario" id="usuario" placeholder="UserName" required>
                 </div>
                 <div class="form-group-column contrasenia">
                     <label for="contrasenia">Contraseña</label>
-                    <input type="password" name="contrasenia" id="contrasenia" placeholder="Introduce Contraseña">
+                    <input type="password" name="contrasenia" id="contrasenia" placeholder="Introduce Contraseña"
+                        required>
                 </div>
                 <div class="checkbox">
                     <input type="checkbox" name="mostrarContrasenia" id="mostrarContra">
@@ -36,19 +37,19 @@
             <div class="form-row-personales-1">
                 <div class="form-group-column nombre">
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
                 </div>
                 <div class="form-group-column apellidos">
                     <label for="apellidos">Apellidos</label>
-                    <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos">
+                    <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" required>
                 </div>
                 <div class="form-group-column telefono">
                     <label for="telefono">Teléfono</label>
-                    <input type="tel" name="telefono" id="telefono" placeholder="Ejem: (+34)922123123">
+                    <input type="tel" name="telefono" id="telefono" placeholder="Ejem: (+34)922123123" required>
                 </div>
                 <div class="form-group-column codPostal">
                     <label for="codPostal">Código Postal</label>
-                    <input type="number" name="codPostal" id="codPostal" placeholder="38XXX">
+                    <input type="number" name="codPostal" id="codPostal" placeholder="38XXX" required>
                 </div>
             </div>
             <div class="form-row-personales-2">
@@ -60,13 +61,13 @@
                             <option value="dni">DNI</option>
                             <option value="nie">NIE</option>
                         </select>
-                        <input type="text" name="dni" id="dni" placeholder="DNI / NIE" disabled>
+                        <input type="text" name="dni" id="dni" placeholder="DNI / NIE" disabled required>
                     </div>
                 </div>
                 <div class="form-group-column cuenta">
                     <span>Crear cuenta como:</span>
                     <div class="form-group-row">
-                        <input type="radio" name="cuenta" id="particular" value="particular"><label
+                        <input type="radio" name="cuenta" id="particular" value="particular" checked><label
                             for="particular">Particular</label>
                         <input type="radio" name="cuenta" id="empresa" value="empresa"><label
                             for="empresa">Empresa</label>
@@ -151,37 +152,37 @@
                 </div>
                 <div class="form-group-column aficion-1">
                     <div class="form-group-row">
-                        <input type="checkbox" name="musica" id="musica">
+                        <input type="checkbox" name="musica" id="musica" value="checked">
                         <label for="musica">Música</label>
                     </div>
                 </div>
                 <div class="form-group-column aficion-2">
                     <div class="form-group-row">
-                        <input type="checkbox" name="deporte" id="deporte">
+                        <input type="checkbox" name="deporte" id="deporte" value="checked">
                         <label for="deporte">Deporte</label>
                     </div>
                 </div>
                 <div class="form-group-column aficion-3">
                     <div class="form-group-row">
-                        <input type="checkbox" name="juegos" id="juegos">
+                        <input type="checkbox" name="juegos" id="juegos" value="checked">
                         <label for="juegos">Video Juegos</label>
                     </div>
                 </div>
                 <div class="form-group-column aficion-4">
                     <div class="form-group-row">
-                        <input type="checkbox" name="manualidad" id="manualidad">
+                        <input type="checkbox" name="manualidad" id="manualidad" value="checked">
                         <label for="manualidad">Manualidades</label>
                     </div>
                 </div>
                 <div class="form-group-column aficion-5">
                     <div class="form-group-row">
-                        <input type="checkbox" name="artes" id="artes">
+                        <input type="checkbox" name="artes" id="artes" value="checked">
                         <label for="artes">Artes</label>
                     </div>
                 </div>
                 <div class="form-group-column aficion-6">
                     <div class="form-group-row">
-                        <input type="checkbox" name="lectura" id="lectura">
+                        <input type="checkbox" name="lectura" id="lectura" value="checked">
                         <label for="lectura">Lectura</label>
                     </div>
                 </div>
@@ -193,12 +194,12 @@
             </legend>
             <div class="form-group-column titulo">
                 <label for="titulo">Título</label>
-                <input type="text" name="titulo" id="titulo" placeholder="Título" maxlength="15">
+                <input type="text" name="titulo" id="titulo" placeholder="Título" maxlength="15" required>
                 <p class="contador"><span id="tituloCount">0</span>&nbsp;/ 15</p>
             </div>
             <div class="form-group-column descripcion">
                 <label for="descripcion">Descripción</label>
-                <textarea name="descripcion" id="descripcion" rows="6" maxlength="120"></textarea>
+                <textarea name="descripcion" id="descripcion" rows="6" maxlength="120" required></textarea>
                 <p class="contador"><span id="descripcionCount">0</span>&nbsp;/ 120</p>
             </div>
             <input type="submit" value="Enviar">
