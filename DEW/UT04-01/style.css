@@ -37,6 +37,22 @@ textarea:focus,
     outline: none;
 }
 
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.form {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.error-container {
+    border: 1px solid black;
+    padding: 10px;
+}
+
 .form-group-column {
     display: flex;
     flex-direction: column;
