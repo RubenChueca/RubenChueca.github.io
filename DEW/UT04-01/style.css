@@ -19,8 +19,8 @@ p {
     margin: 0;
 }
 
-input:invalid,
-textarea:invalid {
+input.validated:invalid,
+textarea.validated:invalid {
     border: 1px solid red;
 }
 
@@ -48,7 +48,10 @@ textarea:focus,
     padding: 10px;
 }
 
-.error-container {
+#error-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     border: 1px solid black;
     padding: 10px;
 }

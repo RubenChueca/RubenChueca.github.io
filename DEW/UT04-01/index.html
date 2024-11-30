@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Usuario-Publicación</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -22,8 +22,8 @@
                             <input type="text" name="usuario" id="usuario" placeholder="UserName" required autofocus>
                         </div>
                         <div class="form-group-column contrasena">
-                            <label for="contraseña">Contraseña</label>
-                            <input type="password" name="contraseña" id="contrasena" placeholder="Introduce Contraseña"
+                            <label for="contrasena">Contraseña</label>
+                            <input type="password" name="contrasena" id="contrasena" placeholder="Introduce Contraseña"
                                 required>
                         </div>
                         <div class="checkbox">
@@ -152,37 +152,37 @@
                         <div class="form-group-column aficion-texto">
                             <span>Elige tus aficiones:</span>
                         </div>
-                        <div class="form-group-column aficion-1">
+                        <div class="form-group-column aficiones aficion-1">
                             <div class="form-group-row">
                                 <input type="checkbox" name="musica" id="musica" value="checked">
                                 <label for="musica">Música</label>
                             </div>
                         </div>
-                        <div class="form-group-column aficion-2">
+                        <div class="form-group-column aficiones aficion-2">
                             <div class="form-group-row">
                                 <input type="checkbox" name="deporte" id="deporte" value="checked">
                                 <label for="deporte">Deporte</label>
                             </div>
                         </div>
-                        <div class="form-group-column aficion-3">
+                        <div class="form-group-column aficiones aficion-3">
                             <div class="form-group-row">
                                 <input type="checkbox" name="juegos" id="juegos" value="checked">
                                 <label for="juegos">Video Juegos</label>
                             </div>
                         </div>
-                        <div class="form-group-column aficion-4">
+                        <div class="form-group-column aficiones aficion-4">
                             <div class="form-group-row">
                                 <input type="checkbox" name="manualidad" id="manualidad" value="checked">
                                 <label for="manualidad">Manualidades</label>
                             </div>
                         </div>
-                        <div class="form-group-column aficion-5">
+                        <div class="form-group-column aficiones aficion-5">
                             <div class="form-group-row">
                                 <input type="checkbox" name="artes" id="artes" value="checked">
                                 <label for="artes">Artes</label>
                             </div>
                         </div>
-                        <div class="form-group-column aficion-6">
+                        <div class="form-group-column aficiones aficion-6">
                             <div class="form-group-row">
                                 <input type="checkbox" name="lectura" id="lectura" value="checked">
                                 <label for="lectura">Lectura</label>
@@ -208,23 +208,7 @@
                 </fieldset>
             </form>
         </div>
-        <div class="error-container">
-            <span id="usuarioErr"></span>
-            <span id="contraErr"></span>
-            <span id="nombreErr"></span>
-            <span id="apellidosErr"></span>
-            <span id="telefonoErr"></span>
-            <span id="codPostalErr"></span>
-            <span id="dniErr"></span>
-            <span id="musicaErr"></span>
-            <span id="deporteErr"></span>
-            <span id="juegosErr"></span>
-            <span id="manualidadesErr"></span>
-            <span id="artesErr"></span>
-            <span id="lecturaErr"></span>
-            <span id="tituloErr"></span>
-            <span id="descripcionErr"></span>
-        </div>
+        <div id="error-container"></div>
     </div>
     <script src="script.js"></script>
 </body>
