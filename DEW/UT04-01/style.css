@@ -25,14 +25,12 @@ textarea.validated:invalid {
 }
 
 input:valid:not([type="submit"]),
-textarea:valid,
-#nacimiento {
+textarea:valid {
     border: 1px solid lightgreen;
 }
 
 input:focus,
-textarea:focus,
-#nacimiento:focus {
+textarea:focus {
     border: 1px solid blue !important;
     outline: none;
 }
@@ -118,8 +116,7 @@ textarea:focus,
     grid-template-areas:
         "dni cuenta nacimiento"
         "texto . ."
-        "aficion1 aficion2 aficion3"
-        "aficion4 aficion5 aficion6";
+        "aficiones aficiones aficiones";
     gap: 10px;
 }
 
@@ -133,6 +130,24 @@ textarea:focus,
 
 .nacimiento {
     grid-area: nacimiento;
+}
+
+.aficion-texto {
+    grid-area: texto;
+}
+
+.aficiones {
+    grid-area: aficiones;
+}
+
+.form-row-aficiones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+        "texto . ."
+        "aficion1 aficion2 aficion3"
+        "aficion4 aficion5 aficion6";
+    gap: 10px;
 }
 
 .aficion-texto {

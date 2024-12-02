@@ -68,29 +68,30 @@ DOM.inputs.forEach((input) => {
 // -------- Validación formulario --------
 DOM.form.addEventListener("submit", (e) => {
     let isValid = true;
+    let aficionesChecked = checkAficiones();
     let err = [];
 
     DOM.inputs.forEach((input) => {
         input.classList.add("validated");
 
-        if (!input.checkValidity() || input.disabled == true) {
+        if (!input.validationMessage == "" || input.disabled == true) {
             isValid = false;
             err.push(input);
         }
     });
 
+    if (aficionesChecked <= 1) {
+        isValid = false;
+    }
+
     if (!isValid) {
         e.preventDefault();
-        createErrElements(err);
+        createErrElements(err, aficionesChecked);
 
         err.forEach(({ id }) => {
             let mensaje = errorMessages[id];
             document.querySelector(`#${id}Err`).textContent = mensaje;
         });
-
-        if (checkAficiones() == 0) {
-            document.querySelector('#aficionesErr').textContent = "Tienes que seleccionar al menos una afición";
-        }
     }
 });
 
@@ -108,18 +109,20 @@ function checkAficiones() {
 }
 
 // -------- Método para crear mensajes de error --------
-function createErrElements(err) {
+function createErrElements(err, aficionesChecked) {
     // Limpiar contenido de errorContainer
-    DOM.errorContainer.replaceChildren();
-
     err.forEach(({ id }) => {
         let span = document.createElement("span");
         span.id = `${id}Err`;
-        DOM.errorContainer.appendChild(span);
+        span.style.color = "red";
+        document.querySelector(`#${id}`).insertAdjacentElement("afterend", span);
     });
 
-    let span = document.createElement("span");
-    span.id = "aficionesErr";
-
-    DOM.errorContainer.appendChild(span);
+    if (aficionesChecked <= 1) {
+        let span = document.createElement("span");
+        span.id = "aficionesErr";
+        span.style.color = "red";
+        document.querySelector('#manualidad').appendChild(span);
+        document.querySelector('#manualidad').textContent = "Tienes que seleccionar al menos dos aficiones";
+    }
 }
