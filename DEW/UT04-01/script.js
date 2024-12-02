@@ -24,11 +24,11 @@ const errorMessages = {
     descripcion: "La descripción de la publicación es obligatoria"
 }
 
-// -------- Deshabilitar campo de texto dni --------
-// -------- si no se selecciona una opción  --------
+// -------- Habilitar campo dni cuando--------
+// -------- se seleccione una opción --------
 DOM.select_dni.addEventListener('change', () => {
     const dniInput = document.getElementById('dni');
-    dniInput.disabled = this.value === "";
+    dniInput.disabled = false;
 });
 
 // -------- Mostrar o ocultar contraseña --------
@@ -57,7 +57,8 @@ DOM.descripcion.addEventListener("input", () => {
     DOM.descripcionCount.textContent = inputLength;
 });
 
-// -------- Función para validar un campo al perder el foco --------
+// -------- Añadir clase validated cuando --------
+// -------- un input pierda el foco --------
 DOM.inputs.forEach((input) => {
     input.addEventListener("blur", () => {
         input.classList.add("validated");
@@ -108,7 +109,9 @@ function checkAficiones() {
 
 // -------- Método para crear mensajes de error --------
 function createErrElements(err) {
+    // Limpiar contenido de errorContainer
     DOM.errorContainer.replaceChildren();
+
     err.forEach(({ id }) => {
         let span = document.createElement("span");
         span.id = `${id}Err`;
@@ -117,5 +120,6 @@ function createErrElements(err) {
 
     let span = document.createElement("span");
     span.id = "aficionesErr";
+
     DOM.errorContainer.appendChild(span);
 }
