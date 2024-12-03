@@ -35,21 +35,7 @@ textarea:focus {
     outline: none;
 }
 
-.layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
 .form {
-    border: 1px solid black;
-    padding: 10px;
-}
-
-#error-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
     border: 1px solid black;
     padding: 10px;
 }
@@ -146,7 +132,8 @@ textarea:focus {
     grid-template-areas:
         "texto . ."
         "aficion1 aficion2 aficion3"
-        "aficion4 aficion5 aficion6";
+        "aficion4 aficion5 aficion6"
+        "err err .";
     gap: 10px;
 }
 
@@ -176,6 +163,10 @@ textarea:focus {
 
 .aficion-6 {
     grid-area: aficion6;
+}
+
+#aficionesErr {
+    grid-area: err;
 }
 
 .contador {

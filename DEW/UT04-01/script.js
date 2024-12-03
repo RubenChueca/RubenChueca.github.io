@@ -3,6 +3,7 @@ const DOM = {
     form: document.querySelector('#frm'),
     inputs: document.querySelectorAll("input, textarea"),
     select_dni: document.querySelector('#select-dni'),
+    dni: document.querySelector('#dni'),
     mostrarContra: document.querySelector('#mostrarContra'),
     titulo: document.querySelector('#titulo'),
     tituloCount: document.querySelector('#tituloCount'),
@@ -27,34 +28,28 @@ const errorMessages = {
 // -------- Habilitar campo dni cuando--------
 // -------- se seleccione una opción --------
 DOM.select_dni.addEventListener('change', () => {
-    const dniInput = document.getElementById('dni');
-    dniInput.disabled = false;
+    if (DOM.select_dni.value === 'dni') {
+        DOM.dni.disabled = false;
+        DOM.dni.setAttribute('pattern', '^\\d{8}[A-Za-z]$');
+        DOM.dni.placeholder = 'Ejem: 11122233A';
+    } else if (DOM.select_dni.value === 'nie') {
+        DOM.dni.disabled = false;
+        DOM.dni.setAttribute('pattern', '^[A-Za-z]\\d{7}[A-Za-z]$');
+        DOM.dni.placeholder = 'Ejem: A11122233B';
+    }
 });
 
 // -------- Mostrar o ocultar contraseña --------
 DOM.mostrarContra.addEventListener("click", () => {
     let inputPass = document.querySelector("#contrasena");
-
-    if (inputPass.type === "password") {
-        inputPass.type = "text";
-    } else {
-        inputPass.type = "password";
-    }
-})
-
-// -------- Control de contador de caracteres --------
-DOM.titulo.addEventListener("input", () => {
-    let inputTitulo = document.querySelector("#titulo");
-    let inputLength = inputTitulo.value.length;
-
-    DOM.tituloCount.textContent = inputLength;
+    inputPass.type = (inputPass.type === "password") ? "text" : "password";
 });
 
-DOM.descripcion.addEventListener("input", () => {
-    let inputDescripcion = document.querySelector("#descripcion");
-    let inputLength = inputDescripcion.value.length;
-
-    DOM.descripcionCount.textContent = inputLength;
+// -------- Control de contador de caracteres --------
+[DOM.titulo, DOM.descripcion].forEach(input => {
+    input.addEventListener("input", () => {
+        document.querySelector(`#${input.id}Count`).textContent = input.value.length;
+    });
 });
 
 // -------- Añadir clase validated cuando --------
@@ -62,8 +57,26 @@ DOM.descripcion.addEventListener("input", () => {
 DOM.inputs.forEach((input) => {
     input.addEventListener("blur", () => {
         input.classList.add("validated");
+        handleValidation(input);
     });
 });
+
+function handleValidation(input) {
+    let errorSpan = document.querySelector(`#${input.id}Err`);
+    if (input.validity.valid) {
+        if (errorSpan) errorSpan.remove();
+    } else {
+        if (!errorSpan) {
+            errorSpan = document.createElement("span");
+            errorSpan.id = `${input.id}Err`;
+            errorSpan.style.color = "red";
+            errorSpan.textContent = errorMessages[input.id];
+            input.id !== "dni"
+                ? input.insertAdjacentElement("afterend", errorSpan)
+                : document.querySelector(".dni").insertAdjacentElement("beforeend", errorSpan);
+        }
+    }
+}
 
 // -------- Validación formulario --------
 DOM.form.addEventListener("submit", (e) => {
@@ -74,7 +87,7 @@ DOM.form.addEventListener("submit", (e) => {
     DOM.inputs.forEach((input) => {
         input.classList.add("validated");
 
-        if (!input.validationMessage == "" || input.disabled == true) {
+        if (!input.validity.valid || input.disabled == true) {
             isValid = false;
             err.push(input);
         }
@@ -87,11 +100,6 @@ DOM.form.addEventListener("submit", (e) => {
     if (!isValid) {
         e.preventDefault();
         createErrElements(err, aficionesChecked);
-
-        err.forEach(({ id }) => {
-            let mensaje = errorMessages[id];
-            document.querySelector(`#${id}Err`).textContent = mensaje;
-        });
     }
 });
 
@@ -112,17 +120,29 @@ function checkAficiones() {
 function createErrElements(err, aficionesChecked) {
     // Limpiar contenido de errorContainer
     err.forEach(({ id }) => {
+        let existingError = document.querySelector(`#${id}Err`);
+        if (existingError) existingError.remove();
+
         let span = document.createElement("span");
         span.id = `${id}Err`;
         span.style.color = "red";
-        document.querySelector(`#${id}`).insertAdjacentElement("afterend", span);
+        span.textContent = errorMessages[id];
+
+        if (id != "dni") {
+            document.querySelector(`#${id}`).insertAdjacentElement("afterend", span);
+        } else {
+            document.querySelector('.dni').insertAdjacentElement("beforeend", span);
+        }
     });
 
     if (aficionesChecked <= 1) {
+        let existingError = document.querySelector("#aficionesErr");
+        if (existingError) existingError.remove();
+
         let span = document.createElement("span");
         span.id = "aficionesErr";
         span.style.color = "red";
-        document.querySelector('#manualidad').appendChild(span);
-        document.querySelector('#manualidad').textContent = "Tienes que seleccionar al menos dos aficiones";
+        span.textContent = "Tienes que seleccionar al menos dos aficiones";
+        document.querySelector('.aficiones').insertAdjacentElement("beforeend", span);
     }
 }
