@@ -35,9 +35,11 @@ textarea:focus {
     outline: none;
 }
 
-.form {
+.layout {
+    width: 50%;
     border: 1px solid black;
     padding: 10px;
+    margin: auto;
 }
 
 .form-group-column {

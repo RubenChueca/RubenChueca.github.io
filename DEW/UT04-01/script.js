@@ -9,7 +9,9 @@ const DOM = {
     tituloCount: document.querySelector('#tituloCount'),
     descripcion: document.querySelector('#descripcion'),
     descripcionCount: document.querySelector('#descripcionCount'),
+    aficiones: document.querySelector('#aficiones'),
     errorContainer: document.querySelector('#error-container'),
+    contrasena: document.querySelector("#contrasena"),
 }
 
 // -------- Mensajes de error personalizados --------
@@ -41,8 +43,7 @@ DOM.select_dni.addEventListener('change', () => {
 
 // -------- Mostrar o ocultar contraseña --------
 DOM.mostrarContra.addEventListener("click", () => {
-    let inputPass = document.querySelector("#contrasena");
-    inputPass.type = (inputPass.type === "password") ? "text" : "password";
+    DOM.contrasena.type = (DOM.contrasena.type === "password") ? "text" : "password";
 });
 
 // -------- Control de contador de caracteres --------
@@ -93,8 +94,10 @@ DOM.form.addEventListener("submit", (e) => {
         }
     });
 
-    if (aficionesChecked <= 1) {
+    if (aficionesChecked.length <= 1) {
         isValid = false;
+    } else {
+        DOM.aficiones.value = aficionesChecked.join(", ");
     }
 
     if (!isValid) {
@@ -106,14 +109,16 @@ DOM.form.addEventListener("submit", (e) => {
 // -------- Método para comprobar si --------
 // -------- hay aficiones seleccionadas --------
 function checkAficiones() {
-    let aficiones = document.querySelectorAll('.aficiones input[type="checkbox"]');
-    let aficionesCount = 0;
+    let aficionesInputs = document.querySelectorAll('.aficiones input[type="checkbox"]');
+    let arrAficiones = [];
 
-    aficiones.forEach(aficion => {
-        if (aficion.checked) aficionesCount++
+    aficionesInputs.forEach(input => {
+        if (input.checked) {
+            arrAficiones.push(input.value);
+        }
     });
 
-    return aficionesCount;
+    return arrAficiones;
 }
 
 // -------- Método para crear mensajes de error --------
@@ -135,7 +140,7 @@ function createErrElements(err, aficionesChecked) {
         }
     });
 
-    if (aficionesChecked <= 1) {
+    if (aficionesChecked.length <= 1) {
         let existingError = document.querySelector("#aficionesErr");
         if (existingError) existingError.remove();
 

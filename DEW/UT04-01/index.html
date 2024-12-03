@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="form">
+    <div class="layout">
         <form action="https://www.w3schools.com/action_page.php" novalidate id="frm">
             <fieldset>
                 <legend>
@@ -18,11 +18,11 @@
                 <div class="form-row-usuario">
                     <div class="form-group-column usuario">
                         <label for="usuario">Nombre de usuario</label>
-                        <input type="text" name="usuario" id="usuario" placeholder="UserName" required autofocus>
+                        <input type="text" name="NombreUsuario" id="usuario" placeholder="UserName" required autofocus>
                     </div>
                     <div class="form-group-column contrasena">
                         <label for="contrasena">Contraseña</label>
-                        <input type="password" name="contrasena" id="contrasena" placeholder="Introduce Contraseña"
+                        <input type="password" name="Contrasena" id="contrasena" placeholder="Introduce Contraseña"
                             required>
                     </div>
                     <div class="checkbox">
@@ -38,20 +38,20 @@
                 <div class="form-row-personales-1">
                     <div class="form-group-column nombre">
                         <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
+                        <input type="text" name="Nombre" id="nombre" placeholder="Nombre" required>
                     </div>
                     <div class="form-group-column apellidos">
                         <label for="apellidos">Apellidos</label>
-                        <input type="text" name="apellidos" id="apellidos" placeholder="Apellidos" required>
+                        <input type="text" name="Apellidos" id="apellidos" placeholder="Apellidos" required>
                     </div>
                     <div class="form-group-column telefono">
                         <label for="telefono">Teléfono</label>
-                        <input type="tel" name="telefono" id="telefono" maxlength="14" pattern="^\(\+34\)\d{9}$"
+                        <input type="tel" name="Telefono" id="telefono" maxlength="14" pattern="^\(\+34\)\d{9}$"
                             placeholder="Ejem: (+34)922123123" required>
                     </div>
                     <div class="form-group-column codPostal">
                         <label for="codPostal">Código Postal</label>
-                        <input type="text" name="codPostal" id="codPostal" maxlength="5" pattern="^38\d{3}$"
+                        <input type="text" name="CodigoPostal" id="codPostal" maxlength="5" pattern="^38\d{3}$"
                             placeholder="38XXX" required>
                     </div>
                 </div>
@@ -59,26 +59,26 @@
                     <div class="form-group-column dni">
                         <label for="dni">DNI/NIE</label>
                         <div class="form-group-row">
-                            <select name="select-dni" id="select-dni">
+                            <select name="TipoDocumento" id="select-dni">
                                 <option value="" disabled selected>---</option>
                                 <option value="dni">DNI</option>
                                 <option value="nie">NIE</option>
                             </select>
-                            <input type="text" name="dni" id="dni" placeholder="DNI / NIE" disabled required>
+                            <input type="text" name="DniNie" id="dni" placeholder="DNI / NIE" disabled required>
                         </div>
                     </div>
                     <div class="form-group-column cuenta">
                         <span>Crear cuenta como:</span>
                         <div class="form-group-row">
-                            <input type="radio" name="cuenta" id="particular" value="particular" checked><label
+                            <input type="radio" name="CuentaComo" id="particular" value="particular" checked><label
                                 for="particular">Particular</label>
-                            <input type="radio" name="cuenta" id="empresa" value="empresa"><label
+                            <input type="radio" name="CuentaComo" id="empresa" value="empresa"><label
                                 for="empresa">Empresa</label>
                         </div>
                     </div>
                     <div class="form-group-column nacimiento">
                         <label for="nacimiento">Año de Nacimiento</label>
-                        <select name="nacimiento" id="nacimiento">
+                        <select name="AnioNacimiento" id="nacimiento">
                             <option value="1940">1940</option>
                             <option value="1941">1941</option>
                             <option value="1942">1942</option>
@@ -156,40 +156,41 @@
                         </div>
                         <div class="form-group-column aficion-1">
                             <div class="form-group-row">
-                                <input type="checkbox" name="musica" id="musica" value="checked">
+                                <input type="checkbox" id="musica" value="MU">
                                 <label for="musica">Música</label>
                             </div>
                         </div>
                         <div class="form-group-column aficion-2">
                             <div class="form-group-row">
-                                <input type="checkbox" name="deporte" id="deporte" value="checked">
+                                <input type="checkbox" id="deporte" value="DE">
                                 <label for="deporte">Deporte</label>
                             </div>
                         </div>
                         <div class="form-group-column aficion-3">
                             <div class="form-group-row">
-                                <input type="checkbox" name="juegos" id="juegos" value="checked">
+                                <input type="checkbox" id="juegos" value="VI">
                                 <label for="juegos">Video Juegos</label>
                             </div>
                         </div>
                         <div class="form-group-column aficion-4">
                             <div class="form-group-row">
-                                <input type="checkbox" name="manualidad" id="manualidad" value="checked">
+                                <input type="checkbox" id="manualidad" value="MA">
                                 <label for="manualidad">Manualidades</label>
                             </div>
                         </div>
                         <div class="form-group-column aficion-5">
                             <div class="form-group-row">
-                                <input type="checkbox" name="artes" id="artes" value="checked">
+                                <input type="checkbox" id="artes" value="AR">
                                 <label for="artes">Artes</label>
                             </div>
                         </div>
                         <div class="form-group-column aficion-6">
                             <div class="form-group-row">
-                                <input type="checkbox" name="lectura" id="lectura" value="checked">
+                                <input type="checkbox" id="lectura" value="LE">
                                 <label for="lectura">Lectura</label>
                             </div>
                         </div>
+                        <input type="hidden" name="aficiones" id="aficiones">
                     </div>
                 </div>
             </fieldset>
@@ -199,19 +200,21 @@
                 </legend>
                 <div class="form-group-column titulo">
                     <label for="titulo">Título</label>
-                    <input type="text" name="titulo" id="titulo" placeholder="Título" maxlength="15" required>
+                    <input type="text" name="PublicacionTitulo" id="titulo" placeholder="Título" maxlength="15"
+                        required>
                     <p class="contador"><span id="tituloCount">0</span>&nbsp;/ 15</p>
                 </div>
                 <div class="form-group-column descripcion">
                     <label for="descripcion">Descripción</label>
-                    <textarea name="descripcion" id="descripcion" rows="6" maxlength="120" required></textarea>
+                    <textarea name="PublicacionDescripcion" id="descripcion" rows="6" maxlength="120"
+                        required></textarea>
                     <p class="contador"><span id="descripcionCount">0</span>&nbsp;/ 120</p>
                 </div>
                 <input type="submit" value="Enviar">
             </fieldset>
         </form>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js" type="module"></script>
 </body>
 
 </html>
