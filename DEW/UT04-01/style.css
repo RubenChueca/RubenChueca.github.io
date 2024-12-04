@@ -32,7 +32,7 @@ textarea:focus {
 
 .layout {
     display: grid;
-    grid-template-columns: 2fr 0.75fr;
+    grid-template-columns: 2fr 1fr;
     gap: 10px;
 }
 
@@ -159,7 +159,11 @@ textarea:focus {
 }
 
 .error-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     border: 1px solid black;
+    padding: 10px;
     height: 50%;
 }
 
