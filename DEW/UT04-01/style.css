@@ -24,11 +24,6 @@ textarea.validated:invalid {
     border: 1px solid red;
 }
 
-input:valid:not([type="submit"]),
-textarea:valid {
-    border: 1px solid lightgreen;
-}
-
 input:focus,
 textarea:focus {
     border: 1px solid blue !important;
@@ -36,10 +31,14 @@ textarea:focus {
 }
 
 .layout {
-    width: 50%;
+    display: grid;
+    grid-template-columns: 2fr 0.75fr;
+    gap: 10px;
+}
+
+.form {
     border: 1px solid black;
     padding: 10px;
-    margin: auto;
 }
 
 .form-group-column {
@@ -76,26 +75,7 @@ textarea:focus {
 .form-row-personales-1 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        "nombre apellidos"
-        "telefono postal";
     gap: 10px;
-}
-
-.nombre {
-    grid-area: nombre;
-}
-
-.apellidos {
-    grid-area: apellidos;
-}
-
-.telefono {
-    grid-area: telefono;
-}
-
-.codPostal {
-    grid-area: postal;
 }
 
 .form-row-personales-2 {
@@ -176,4 +156,14 @@ textarea:focus {
     justify-content: flex-end;
     font-size: 0.75rem;
     color: grey;
+}
+
+.error-container {
+    border: 1px solid black;
+    height: 50%;
+}
+
+.errorMessage {
+    font-size: 0.75rem;
+    color: red;
 }

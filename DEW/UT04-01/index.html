@@ -10,209 +10,211 @@
 
 <body>
     <div class="layout">
-        <form action="https://www.w3schools.com/action_page.php" novalidate id="frm">
-            <fieldset>
-                <legend>
-                    <p>Datos Usuario</p>
-                </legend>
-                <div class="form-row-usuario">
-                    <div class="form-group-column usuario">
-                        <label for="usuario">Nombre de usuario</label>
-                        <input type="text" name="NombreUsuario" id="usuario" placeholder="UserName" required autofocus>
+        <div class="form">
+            <form action="https://www.w3schools.com/action_page.php" novalidate id="frm">
+                <fieldset>
+                    <legend>
+                        <p>Datos Usuario</p>
+                    </legend>
+                    <div class="form-row-usuario">
+                        <div class="form-group-column usuario">
+                            <label for="usuario">Nombre de usuario</label>
+                            <input type="text" name="NombreUsuario" id="usuario" placeholder="UserName" required>
+                        </div>
+                        <div class="form-group-column contrasena">
+                            <label for="contrasena">Contraseña</label>
+                            <input type="password" name="Contrasena" id="contrasena" placeholder="Introduce Contraseña"
+                                required>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" name="mostrarContrasenia" id="mostrarContra">
+                            <label for="mostrarContra">Mostrar Contraseña</label>
+                        </div>
                     </div>
-                    <div class="form-group-column contrasena">
-                        <label for="contrasena">Contraseña</label>
-                        <input type="password" name="Contrasena" id="contrasena" placeholder="Introduce Contraseña"
-                            required>
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        <p>Datos Personales</p>
+                    </legend>
+                    <div class="form-row-personales-1">
+                        <div class="form-group-column nombre">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" name="Nombre" id="nombre" placeholder="Nombre" required>
+                        </div>
+                        <div class="form-group-column apellidos">
+                            <label for="apellidos">Apellidos</label>
+                            <input type="text" name="Apellidos" id="apellidos" placeholder="Apellidos" required>
+                        </div>
+                        <div class="form-group-column telefono">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" name="Telefono" id="telefono" maxlength="14" pattern="^\(\+34\)\d{9}$"
+                                placeholder="Ejem: (+34)922123123" required>
+                        </div>
+                        <div class="form-group-column codPostal">
+                            <label for="codPostal">Código Postal</label>
+                            <input type="text" name="CodigoPostal" id="codPostal" maxlength="5" pattern="^38\d{3}$"
+                                placeholder="38XXX" required>
+                        </div>
                     </div>
-                    <div class="checkbox">
-                        <input type="checkbox" name="mostrarContrasenia" id="mostrarContra">
-                        <label for="mostrarContra">Mostrar Contraseña</label>
-                    </div>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend>
-                    <p>Datos Personales</p>
-                </legend>
-                <div class="form-row-personales-1">
-                    <div class="form-group-column nombre">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="Nombre" id="nombre" placeholder="Nombre" required>
-                    </div>
-                    <div class="form-group-column apellidos">
-                        <label for="apellidos">Apellidos</label>
-                        <input type="text" name="Apellidos" id="apellidos" placeholder="Apellidos" required>
-                    </div>
-                    <div class="form-group-column telefono">
-                        <label for="telefono">Teléfono</label>
-                        <input type="tel" name="Telefono" id="telefono" maxlength="14" pattern="^\(\+34\)\d{9}$"
-                            placeholder="Ejem: (+34)922123123" required>
-                    </div>
-                    <div class="form-group-column codPostal">
-                        <label for="codPostal">Código Postal</label>
-                        <input type="text" name="CodigoPostal" id="codPostal" maxlength="5" pattern="^38\d{3}$"
-                            placeholder="38XXX" required>
-                    </div>
-                </div>
-                <div class=" form-row-personales-2">
-                    <div class="form-group-column dni">
-                        <label for="dni">DNI/NIE</label>
-                        <div class="form-group-row">
-                            <select name="TipoDocumento" id="select-dni">
-                                <option value="" disabled selected>---</option>
-                                <option value="dni">DNI</option>
-                                <option value="nie">NIE</option>
+                    <div class=" form-row-personales-2">
+                        <div class="form-group-column dni">
+                            <label for="dni">DNI/NIE</label>
+                            <div class="form-group-row">
+                                <select name="TipoDocumento" id="select-dni">
+                                    <option value="" disabled selected>---</option>
+                                    <option value="dni">DNI</option>
+                                    <option value="nie">NIE</option>
+                                </select>
+                                <input type="text" name="DniNie" id="dni" placeholder="DNI / NIE" disabled required>
+                            </div>
+                        </div>
+                        <div class="form-group-column cuenta">
+                            <span>Crear cuenta como:</span>
+                            <div class="form-group-row">
+                                <input type="radio" name="CuentaComo" id="particular" value="particular" checked><label
+                                    for="particular">Particular</label>
+                                <input type="radio" name="CuentaComo" id="empresa" value="empresa"><label
+                                    for="empresa">Empresa</label>
+                            </div>
+                        </div>
+                        <div class="form-group-column nacimiento">
+                            <label for="nacimiento">Año de Nacimiento</label>
+                            <select name="AnioNacimiento" id="nacimiento">
+                                <option value="1940">1940</option>
+                                <option value="1941">1941</option>
+                                <option value="1942">1942</option>
+                                <option value="1943">1943</option>
+                                <option value="1944">1944</option>
+                                <option value="1945">1945</option>
+                                <option value="1946">1946</option>
+                                <option value="1947">1947</option>
+                                <option value="1948">1948</option>
+                                <option value="1949">1949</option>
+                                <option value="1950">1950</option>
+                                <option value="1951">1951</option>
+                                <option value="1952">1952</option>
+                                <option value="1953">1953</option>
+                                <option value="1954">1954</option>
+                                <option value="1955">1955</option>
+                                <option value="1956">1956</option>
+                                <option value="1957">1957</option>
+                                <option value="1958">1958</option>
+                                <option value="1959">1959</option>
+                                <option value="1960">1960</option>
+                                <option value="1961">1961</option>
+                                <option value="1962">1962</option>
+                                <option value="1963">1963</option>
+                                <option value="1964">1964</option>
+                                <option value="1965">1965</option>
+                                <option value="1966">1966</option>
+                                <option value="1967">1967</option>
+                                <option value="1968">1968</option>
+                                <option value="1969">1969</option>
+                                <option value="1970">1970</option>
+                                <option value="1971">1971</option>
+                                <option value="1972">1972</option>
+                                <option value="1973">1973</option>
+                                <option value="1974">1974</option>
+                                <option value="1975">1975</option>
+                                <option value="1976">1976</option>
+                                <option value="1977">1977</option>
+                                <option value="1978">1978</option>
+                                <option value="1979">1979</option>
+                                <option value="1980">1980</option>
+                                <option value="1981">1981</option>
+                                <option value="1982">1982</option>
+                                <option value="1983">1983</option>
+                                <option value="1984">1984</option>
+                                <option value="1985">1985</option>
+                                <option value="1986">1986</option>
+                                <option value="1987">1987</option>
+                                <option value="1988">1988</option>
+                                <option value="1989">1989</option>
+                                <option value="1990">1990</option>
+                                <option value="1991">1991</option>
+                                <option value="1992">1992</option>
+                                <option value="1993">1993</option>
+                                <option value="1994">1994</option>
+                                <option value="1995">1995</option>
+                                <option value="1996">1996</option>
+                                <option value="1997">1997</option>
+                                <option value="1998">1998</option>
+                                <option value="1999">1999</option>
+                                <option value="2000">2000</option>
+                                <option value="2001">2001</option>
+                                <option value="2002">2002</option>
+                                <option value="2003">2003</option>
+                                <option value="2004">2004</option>
+                                <option value="2005">2005</option>
+                                <option value="2006">2006</option>
+                                <option value="2007">2007</option>
+                                <option value="2008">2008</option>
                             </select>
-                            <input type="text" name="DniNie" id="dni" placeholder="DNI / NIE" disabled required>
+                        </div>
+                        <div class="form-row-aficiones aficiones">
+                            <div class="form-group-column aficion-texto">
+                                <span>Elige tus aficiones:</span>
+                            </div>
+                            <div class="form-group-column aficion-1">
+                                <div class="form-group-row">
+                                    <input type="checkbox" id="musica" value="MU">
+                                    <label for="musica">Música</label>
+                                </div>
+                            </div>
+                            <div class="form-group-column aficion-2">
+                                <div class="form-group-row">
+                                    <input type="checkbox" id="deporte" value="DE">
+                                    <label for="deporte">Deporte</label>
+                                </div>
+                            </div>
+                            <div class="form-group-column aficion-3">
+                                <div class="form-group-row">
+                                    <input type="checkbox" id="juegos" value="VI">
+                                    <label for="juegos">Video Juegos</label>
+                                </div>
+                            </div>
+                            <div class="form-group-column aficion-4">
+                                <div class="form-group-row">
+                                    <input type="checkbox" id="manualidad" value="MA">
+                                    <label for="manualidad">Manualidades</label>
+                                </div>
+                            </div>
+                            <div class="form-group-column aficion-5">
+                                <div class="form-group-row">
+                                    <input type="checkbox" id="artes" value="AR">
+                                    <label for="artes">Artes</label>
+                                </div>
+                            </div>
+                            <div class="form-group-column aficion-6">
+                                <div class="form-group-row">
+                                    <input type="checkbox" id="lectura" value="LE">
+                                    <label for="lectura">Lectura</label>
+                                </div>
+                            </div>
+                            <input type="hidden" name="aficiones" id="aficiones">
                         </div>
                     </div>
-                    <div class="form-group-column cuenta">
-                        <span>Crear cuenta como:</span>
-                        <div class="form-group-row">
-                            <input type="radio" name="CuentaComo" id="particular" value="particular" checked><label
-                                for="particular">Particular</label>
-                            <input type="radio" name="CuentaComo" id="empresa" value="empresa"><label
-                                for="empresa">Empresa</label>
-                        </div>
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        <p>Datos Publicación</p>
+                    </legend>
+                    <div class="form-group-column titulo">
+                        <label for="titulo">Título</label>
+                        <input type="text" name="PublicacionTitulo" id="titulo" placeholder="Título" maxlength="15"
+                            required>
+                        <p class="contador"><span id="tituloCount">0</span>&nbsp;/ 15</p>
                     </div>
-                    <div class="form-group-column nacimiento">
-                        <label for="nacimiento">Año de Nacimiento</label>
-                        <select name="AnioNacimiento" id="nacimiento">
-                            <option value="1940">1940</option>
-                            <option value="1941">1941</option>
-                            <option value="1942">1942</option>
-                            <option value="1943">1943</option>
-                            <option value="1944">1944</option>
-                            <option value="1945">1945</option>
-                            <option value="1946">1946</option>
-                            <option value="1947">1947</option>
-                            <option value="1948">1948</option>
-                            <option value="1949">1949</option>
-                            <option value="1950">1950</option>
-                            <option value="1951">1951</option>
-                            <option value="1952">1952</option>
-                            <option value="1953">1953</option>
-                            <option value="1954">1954</option>
-                            <option value="1955">1955</option>
-                            <option value="1956">1956</option>
-                            <option value="1957">1957</option>
-                            <option value="1958">1958</option>
-                            <option value="1959">1959</option>
-                            <option value="1960">1960</option>
-                            <option value="1961">1961</option>
-                            <option value="1962">1962</option>
-                            <option value="1963">1963</option>
-                            <option value="1964">1964</option>
-                            <option value="1965">1965</option>
-                            <option value="1966">1966</option>
-                            <option value="1967">1967</option>
-                            <option value="1968">1968</option>
-                            <option value="1969">1969</option>
-                            <option value="1970">1970</option>
-                            <option value="1971">1971</option>
-                            <option value="1972">1972</option>
-                            <option value="1973">1973</option>
-                            <option value="1974">1974</option>
-                            <option value="1975">1975</option>
-                            <option value="1976">1976</option>
-                            <option value="1977">1977</option>
-                            <option value="1978">1978</option>
-                            <option value="1979">1979</option>
-                            <option value="1980">1980</option>
-                            <option value="1981">1981</option>
-                            <option value="1982">1982</option>
-                            <option value="1983">1983</option>
-                            <option value="1984">1984</option>
-                            <option value="1985">1985</option>
-                            <option value="1986">1986</option>
-                            <option value="1987">1987</option>
-                            <option value="1988">1988</option>
-                            <option value="1989">1989</option>
-                            <option value="1990">1990</option>
-                            <option value="1991">1991</option>
-                            <option value="1992">1992</option>
-                            <option value="1993">1993</option>
-                            <option value="1994">1994</option>
-                            <option value="1995">1995</option>
-                            <option value="1996">1996</option>
-                            <option value="1997">1997</option>
-                            <option value="1998">1998</option>
-                            <option value="1999">1999</option>
-                            <option value="2000">2000</option>
-                            <option value="2001">2001</option>
-                            <option value="2002">2002</option>
-                            <option value="2003">2003</option>
-                            <option value="2004">2004</option>
-                            <option value="2005">2005</option>
-                            <option value="2006">2006</option>
-                            <option value="2007">2007</option>
-                            <option value="2008">2008</option>
-                        </select>
+                    <div class="form-group-column descripcion">
+                        <label for="descripcion">Descripción</label>
+                        <textarea name="PublicacionDescripcion" id="descripcion" rows="6" maxlength="120"
+                            required></textarea>
+                        <p class="contador"><span id="descripcionCount">0</span>&nbsp;/ 120</p>
                     </div>
-                    <div class="form-row-aficiones aficiones">
-                        <div class="form-group-column aficion-texto">
-                            <span>Elige tus aficiones:</span>
-                        </div>
-                        <div class="form-group-column aficion-1">
-                            <div class="form-group-row">
-                                <input type="checkbox" id="musica" value="MU">
-                                <label for="musica">Música</label>
-                            </div>
-                        </div>
-                        <div class="form-group-column aficion-2">
-                            <div class="form-group-row">
-                                <input type="checkbox" id="deporte" value="DE">
-                                <label for="deporte">Deporte</label>
-                            </div>
-                        </div>
-                        <div class="form-group-column aficion-3">
-                            <div class="form-group-row">
-                                <input type="checkbox" id="juegos" value="VI">
-                                <label for="juegos">Video Juegos</label>
-                            </div>
-                        </div>
-                        <div class="form-group-column aficion-4">
-                            <div class="form-group-row">
-                                <input type="checkbox" id="manualidad" value="MA">
-                                <label for="manualidad">Manualidades</label>
-                            </div>
-                        </div>
-                        <div class="form-group-column aficion-5">
-                            <div class="form-group-row">
-                                <input type="checkbox" id="artes" value="AR">
-                                <label for="artes">Artes</label>
-                            </div>
-                        </div>
-                        <div class="form-group-column aficion-6">
-                            <div class="form-group-row">
-                                <input type="checkbox" id="lectura" value="LE">
-                                <label for="lectura">Lectura</label>
-                            </div>
-                        </div>
-                        <input type="hidden" name="aficiones" id="aficiones">
-                    </div>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend>
-                    <p>Datos Publicación</p>
-                </legend>
-                <div class="form-group-column titulo">
-                    <label for="titulo">Título</label>
-                    <input type="text" name="PublicacionTitulo" id="titulo" placeholder="Título" maxlength="15"
-                        required>
-                    <p class="contador"><span id="tituloCount">0</span>&nbsp;/ 15</p>
-                </div>
-                <div class="form-group-column descripcion">
-                    <label for="descripcion">Descripción</label>
-                    <textarea name="PublicacionDescripcion" id="descripcion" rows="6" maxlength="120"
-                        required></textarea>
-                    <p class="contador"><span id="descripcionCount">0</span>&nbsp;/ 120</p>
-                </div>
-                <input type="submit" value="Enviar">
-            </fieldset>
-        </form>
+                    <input type="submit" value="Enviar">
+                </fieldset>
+            </form>
+        </div>
     </div>
     <script src="script.js" type="module"></script>
 </body>
