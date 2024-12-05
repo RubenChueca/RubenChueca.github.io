@@ -96,7 +96,7 @@ DOM.form.addEventListener("submit", (e) => {
         }
     });
 
-    if (aficionesChecked.length <= 1) {
+    if (aficionesChecked.length < 2) {
         isValid = false;
     } else {
         DOM.aficiones.value = aficionesChecked.join(", ");
@@ -113,7 +113,7 @@ DOM.form.addEventListener("submit", (e) => {
 
 // -------- Método para crear mensajes de --------
 // -------- error cuando se pierda el foco --------
-function handleValidation(input) {
+export function handleValidation(input) {
     let errorSpan = document.querySelector(`#${input.id}Err`);
     if (input.validity.valid) {
         if (errorSpan) errorSpan.remove();
@@ -132,7 +132,7 @@ function handleValidation(input) {
 
 // -------- Método para comprobar si --------
 // -------- hay aficiones seleccionadas --------
-function checkAficiones() {
+export function checkAficiones() {
     let aficionesInputs = DOM.aficionesCheckbox;
     let arrAficiones = [];
 
@@ -146,7 +146,7 @@ function checkAficiones() {
 }
 
 // -------- Método para crear mensajes de error --------
-function createErrElements(err) {
+export function createErrElements(err) {
     err.forEach(errMessage => {
         let existingError = document.querySelector(`#${errMessage}Err`);
         if (existingError) existingError.remove();
@@ -165,7 +165,7 @@ function createErrElements(err) {
 }
 
 // -------- Método para crear mensajes de error por defecto --------
-function createDefaultErrors(inputs, err) {
+export function createDefaultErrors(inputs, err) {
     inputs.forEach(input => {
         let errorSpan = document.createElement("span");
         errorSpan.classList.add("errorMessage");
