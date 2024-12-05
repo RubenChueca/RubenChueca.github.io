@@ -96,7 +96,7 @@ DOM.form.addEventListener("submit", (e) => {
         }
     });
 
-    if (aficionesChecked.length < 2) {
+    if (aficionesChecked.length <= 1) {
         isValid = false;
     } else {
         DOM.aficiones.value = aficionesChecked.join(", ");
