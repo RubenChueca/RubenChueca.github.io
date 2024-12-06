@@ -117,7 +117,7 @@ DOM.form.addEventListener("submit", (e) => {
 
 // -------- Método para crear mensajes de --------
 // -------- error cuando se pierda el foco --------
-function handleValidation(input) {
+export function handleValidation(input) {
     let errorSpan = document.querySelector(`#${input.id}Err`);
     if (input.validity.valid) {
         if (errorSpan) errorSpan.remove();
@@ -141,7 +141,7 @@ function checkAficiones() {
 }
 
 // -------- Método para crear mensajes de error --------
-function createErrElements(err) {
+export function createErrElements(err) {
     err.forEach(errMessage => {
         let existingError = document.querySelector(`#${errMessage}Err`);
         if (existingError) existingError.remove();
