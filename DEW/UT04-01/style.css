@@ -19,14 +19,24 @@ p {
     margin: 0;
 }
 
+input {
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
 input.validated:invalid,
 textarea.validated:invalid {
-    border: 1px solid red;
+    border: 2px solid red;
+}
+
+input.validated:valid,
+textarea.validated:valid {
+    border: 2px solid green;
 }
 
 input:focus,
 textarea:focus {
-    border: 1px solid blue !important;
+    border: 1px solid blue;
     outline: none;
 }
 
@@ -164,10 +174,14 @@ textarea:focus {
     justify-content: space-around;
     border: 1px solid black;
     padding: 10px;
-    height: 50%;
+    height: 75%;
 }
 
 .errorMessage {
     font-size: 0.75rem;
     color: red;
+}
+
+.errorDftMessage {
+    font-weight: bold;
 }

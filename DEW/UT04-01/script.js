@@ -1,4 +1,4 @@
-// ------- Elementos del documento --------
+// ------- ELEMENTOS DEL DOM --------
 const DOM = {
     layout: document.querySelector('.layout'),
     form: document.querySelector('#frm'),
@@ -18,7 +18,12 @@ const DOM = {
     errorContainer: document.createElement("section"),
 };
 
-// -------- Mensajes de error personalizados --------
+// -------- Crear contenedor errores por --------
+// -------- defecto de ValidationMessage --------
+DOM.errorContainer.classList.add("error-container");
+DOM.layout.appendChild(DOM.errorContainer);
+
+// -------- MENSAJES DE ERROR --------
 const emptyErrorMessages = {
     usuario: "El nombre de usuario es obligatorio",
     contrasena: "La contraseña es obligatoria",
@@ -34,7 +39,7 @@ const emptyErrorMessages = {
 
 const customErrorMessages = {
     usuario: "Mínimo 4 caracteres",
-    contrasena: "Solo puede introducir números",
+    contrasena: "La contraseña debe tener 8 números",
     nombre: "Mínimo 4 caracteres",
     apellidos: "Mínimo 4 caracteres",
     telefono: "Tiene que introducir (+34) seguido de 9 dígitos",
@@ -42,18 +47,13 @@ const customErrorMessages = {
     dni: "El documento no es correcto",
 };
 
-// -------- Crear contenedor errores por --------
-// -------- defecto de ValidationMessage --------
-// Añadir contenedor de errores
-DOM.errorContainer.classList.add("error-container");
-DOM.layout.appendChild(DOM.errorContainer);
-
+// -------- EVENTOS --------
 
 // -------- Habilitar campo dni cuando--------
 // -------- se seleccione una opción --------
 DOM.select_dni.addEventListener('change', () => {
-    const isDni = DOM.select_dni.value === 'dni';
-    const pattern = isDni ? '^\\d{8}[A-Za-z]$' : '^[A-Za-z]\\d{7}[A-Za-z]$';
+    const isDni = DOM.select_dni.value === 'DNI';
+    const pattern = isDni ? '^\\d{8}[A-Z]$' : '^[XYZ]\\d{7}[A-Z]$';
     const placeholder = isDni ? 'Ejem: 11122233A' : 'Ejem: A11122233B';
 
     DOM.idDni.disabled = false;
@@ -75,8 +75,12 @@ DOM.countElements.forEach(({ input, count }) => {
 // -------- Añadir clase validated cuando --------
 // -------- un input pierda el foco --------
 DOM.allInputs.forEach((input) => {
-    input.addEventListener("blur", () => {
+    input.addEventListener("input", () => {
         input.classList.add("validated");
+
+        if (input.id == "dni") {
+            checkDniNie(input);
+        }
         handleValidation(input);
     });
 });
@@ -88,18 +92,16 @@ DOM.form.addEventListener("submit", (e) => {
     let err = [];
     let inputs = [];
 
-    if (aficionesChecked.length <= 1) {
-        isValid = false;
-        DOM.aficiones.setCustomValidity("Debes seleccionar al menos 2 aficiones");
-    } else {
-        DOM.aficiones.setCustomValidity("");
-        DOM.aficiones.value = aficionesChecked.join(", ");
-    }
-
     DOM.allInputs.forEach((input) => {
         input.classList.add("validated");
 
         if (!input.validity.valid || input.disabled == true) {
+            isValid = false;
+            err.push(input.id);
+            inputs.push(input);
+        }
+
+        if (aficionesChecked.length < 2 && input.id == "aficiones") {
             isValid = false;
             err.push(input.id);
             inputs.push(input);
@@ -109,36 +111,62 @@ DOM.form.addEventListener("submit", (e) => {
     if (!isValid) {
         e.preventDefault();
 
-        if (aficionesChecked.length <= 1) err.push("aficiones");
+        if (aficionesChecked.length < 2) err.push("aficiones");
         createErrElements(err);
         createDefaultErrors(inputs);
     }
 });
 
+// -------- MÉTODOS --------
+
+// -------- Método para comprobar si --------
+// -------- hay aficiones seleccionadas --------
+export function checkAficiones() {
+    return [...DOM.aficionesCheckbox].filter(input => input.checked).map(input => input.value);
+}
+
+export function checkDniNie(input) {
+    // Tabla de letras de control
+    const letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B',
+        'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
+    const nieRegex = /^[XYZ]\d{7}[A-Z]$/;
+    const valor = input.value;
+    let numero;
+
+    if (nieRegex.test(valor)) {
+        const letraInicial = valor.charAt(0);
+        const reemplazo = { 'X': '0', 'Y': '1', 'Z': '2' };
+        numero = reemplazo[letraInicial] + valor.slice(1, -1);
+    } else {
+        numero = valor.slice(0, -1);
+    }
+
+    const resto = parseInt(numero) % 23;
+
+    const letraCorrecta = letras[resto];
+    const letraIntroducida = valor.slice(-1);
+
+    (letraCorrecta !== letraIntroducida) ? input.setCustomValidity("El documento no es correcto") : input.setCustomValidity("");
+}
+
 // -------- Método para crear mensajes de --------
 // -------- error cuando se pierda el foco --------
 export function handleValidation(input) {
     let errorSpan = document.querySelector(`#${input.id}Err`);
-    if (input.validity.valid) {
-        if (errorSpan) errorSpan.remove();
-    } else {
-        if (!errorSpan) {
-            errorSpan = document.createElement("span");
-            errorSpan.id = `${input.id}Err`;
-            errorSpan.classList.add("errorMessage");
-            errorSpan.textContent = errorMessages[input.id];
-            input.id !== "dni"
-                ? input.insertAdjacentElement("afterend", errorSpan)
-                : DOM.classDni.insertAdjacentElement("beforeend", errorSpan);
-        }
+
+    if (errorSpan) errorSpan.remove();
+
+    if (!input.validity.valid) {
+        errorSpan = document.createElement("span");
+        errorSpan.id = `${input.id}Err`;
+        errorSpan.classList.add("errorMessage");
+        errorSpan.textContent = (input.value == "") ? emptyErrorMessages[input.id] : customErrorMessages[input.id];
+        input.id !== "dni"
+            ? input.insertAdjacentElement("afterend", errorSpan)
+            : DOM.classDni.insertAdjacentElement("beforeend", errorSpan);
     }
 }
 
-// -------- Método para comprobar si --------
-// -------- hay aficiones seleccionadas --------
-function checkAficiones() {
-    return [...DOM.aficionesCheckbox].filter(input => input.checked).map(input => input.value);
-}
 
 // -------- Método para crear mensajes de error --------
 export function createErrElements(err) {
@@ -149,7 +177,7 @@ export function createErrElements(err) {
         let errorSpan = document.createElement("span");
         errorSpan.id = `${errMessage}Err`;
         errorSpan.classList.add("errorMessage");
-        errorSpan.textContent = emptyErrorMessages[errMessage];
+        errorSpan.textContent = (document.querySelector(`#${errMessage}`).value == "") ? emptyErrorMessages[errMessage] : customErrorMessages[errMessage];
 
         if (errMessage != "dni") {
             document.querySelector(`#${errMessage}`).insertAdjacentElement("afterend", errorSpan);
@@ -160,14 +188,20 @@ export function createErrElements(err) {
 }
 
 // -------- Método para crear mensajes de error por defecto --------
-function createDefaultErrors(inputs) {
+export function createDefaultErrors(inputs) {
     inputs.forEach(input => {
         let existingError = document.querySelector(`#${input.id}DefaultErr`);
         if (existingError) existingError.remove();
 
         let errorSpan = document.createElement("span");
+        errorSpan.classList.add("errorDftMessage");
         errorSpan.id = `${input.id}DefaultErr`;
-        errorSpan.textContent = `${input.id}: ${input.validationMessage}`;
+
+        if (input.validationMessage != "") {
+            errorSpan.textContent = `${input.id}: ${input.validationMessage}`;
+        } else {
+            errorSpan.textContent = `${input.id}: No devuelve mensaje por defecto`;
+        }
         DOM.errorContainer.insertAdjacentElement("beforeend", errorSpan);
     });
 }
