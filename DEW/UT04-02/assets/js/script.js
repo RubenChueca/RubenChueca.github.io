@@ -72,6 +72,21 @@ DOM.countElements.forEach(({ input, count }) => {
     input.addEventListener("input", () => count.textContent = input.value.length);
 });
 
+// -------- Control de contador de aficiones --------
+DOM.aficionesCheckbox.forEach(checkbox => {
+    checkbox.addEventListener("change", () => {
+        const selectedCount = Array.from(DOM.aficionesCheckbox).filter(aficion => aficion.checked).length;
+
+        let errorSpan = document.querySelector(`#aficionesErr`);
+
+        if (selectedCount >= 2) {
+            errorSpan.style.display = 'none';
+        } else {
+            errorSpan.style.display = 'block';
+        }
+    });
+});
+
 // -------- Añadir clase validated cuando --------
 // -------- un input pierda el foco --------
 DOM.allInputs.forEach((input) => {
@@ -114,6 +129,8 @@ DOM.form.addEventListener("submit", (e) => {
         if (aficionesChecked.length < 2) err.push("aficiones");
         createErrElements(err);
         createDefaultErrors(inputs);
+    } else {
+        DOM.aficiones.value = aficionesChecked.join(",");
     }
 });
 
